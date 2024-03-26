@@ -11,5 +11,5 @@ public class House
   public int Bathrooms { get; set; }
   public int Price { get; set; }
   public string ImgUrl { get; set; }
-  public string creatorId { get; set; }
+  public string CreatorId { get; set; }
 }
