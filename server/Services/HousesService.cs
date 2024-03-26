@@ -12,4 +12,13 @@ public class HousesService
     List<House> houses = _repository.GetHouses();
     return houses;
   }
+  internal House GetHouseById(int houseId)
+  {
+    House house = _repository.GetHouseById(houseId);
+    if (house == null)
+    {
+      throw new Exception($"Invalid Id: {houseId}");
+    }
+    return house; 
+  }
 }

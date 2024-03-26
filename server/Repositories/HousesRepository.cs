@@ -12,4 +12,12 @@ public class HousesRepository
     List<House> houses = _db.Query<House>(sql).ToList();
     return houses;
   }
+
+  internal House GetHouseById(int houseId)
+  {
+    string sql = "SELECT  * FROM houses WHERE id = @id;";
+    House house = _db.Query<House>(sql, new { id = houseId }).FirstOrDefault();
+    return house;
+  }
+
 }
