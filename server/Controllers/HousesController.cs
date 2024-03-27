@@ -54,4 +54,23 @@ public class HousesController : ControllerBase
       return BadRequest(exception.Message);
     }
   }
+
+  [HttpDelete("{houseId}")]
+  [Authorize]
+  public async Task<ActionResult<string>> DestroyHouse(int houseId)
+  {
+    try
+    {
+      Account UserInfo = await _auth0Provider.GetUserInfoAsync<Account>(HttpContext);
+      string message = _housesService.DestroyHouse(houseId, userInfo.Id);
+      return Ok(message);
+    }
+    catch (Exception exception)
+    {
+      return BadRequest(exception.Message)
+    }
+  }
+
+  // TODO these crud requests
+  // HttpPut
 }
